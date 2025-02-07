@@ -5,6 +5,6 @@ jobs:
   all:
     runs-on: ubuntu-latest
     steps:
-      - uses: .github/actions/commit-lint@test
+      - uses: tvaneerdewegh/dest-repo2/.github/actions/commit-lint@test
         with:
           title: "DIT IS EEN TEST"
