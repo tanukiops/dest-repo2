@@ -5,6 +5,6 @@ jobs:
   all:
     runs-on: ubuntu-latest
     steps:
-      - uses: commit-lint@main
+      - uses: actions/commit-lint@main
         with:
           title: "DIT IS EEN TEST"
