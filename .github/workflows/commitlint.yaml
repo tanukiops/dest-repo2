@@ -1,5 +1,5 @@
 on:
-  push:
+  pull_request:
 
 jobs:
   all:
@@ -7,4 +7,4 @@ jobs:
     steps:
       - uses: tanukiops/dest-repo2/.github/actions/commit-lint@test
         with:
-          title: "DIT IS EEN TEST"
+          title: "{{ github.event.pull_request.title }}"
