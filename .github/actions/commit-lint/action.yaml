@@ -6,11 +6,18 @@ inputs:
     description: "Title of the PR"
     required: true
     default: ""
-outputs:
-  result:
-    description: "Output of the linting"
 runs:
-  using: "docker"
-  image: "Dockerfile"
-  args:
-    - ${{ inputs.title }}
+  using: composite
+  steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: "23"
+        cache-dependency-path: ".github/workflows/all-pull-requests.yaml"
+    - name: check PR title
+      shell: bash
+      env:
+        TITLE: ${{ inputs.title }}
+      run: |
+        npm install --save-dev @commitlint/config-conventional @commitlint/cli \
+          && (echo "${TITLE@Q}" | xargs echo | npx commitlint)

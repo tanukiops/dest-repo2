@@ -8,14 +8,4 @@ jobs:
   pr-lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: "23"
-          cache-dependency-path: ".github/workflows/all-pull-requests.yaml"
-      - name: check PR title
-        env:
-          TITLE: ${{ github.event.pull_request.title }}
-        run: |
-          npm install --save-dev @commitlint/config-conventional @commitlint/cli \
-          && (echo "${TITLE@Q}" | xargs echo | npx commitlint)
+      - uses: .github/actions/commit-lint@main
