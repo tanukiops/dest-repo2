@@ -1,6 +1,6 @@
 on:
   pull_request:
-    types: [edited]
+    types: [edited, opened]
 jobs:
   all:
     runs-on: ubuntu-latest
