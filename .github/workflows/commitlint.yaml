@@ -5,6 +5,13 @@ jobs:
   all:
     runs-on: ubuntu-latest
     steps:
-      - uses: tanukiops/dest-repo2/.github/actions/commit-lint@test
+      - uses: actions/setup-node@v3
         with:
-          title: "{{ github.event.pull_request.title }}"
+          node-version: "23"
+          cache-dependency-path: ".github/workflows/all-pull-requests.yaml"
+      - name: check PR title
+        env:
+          TITLE: ${{ github.event.pull_request.title }}
+        run: |
+          npm install --save-dev @commitlint/config-conventional @commitlint/cli \
+          && (echo "${TITLE@Q}" | xargs echo | npx commitlint)
