@@ -1,6 +1,9 @@
+name: Check if pull-request title adheres to conventional commits.
 on:
   pull_request:
-    types: [edited, opened]
+    types:
+      - edited
+      - opened
 jobs:
   all:
     runs-on: ubuntu-latest
