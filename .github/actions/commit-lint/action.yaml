@@ -1,0 +1,16 @@
+# action.yml
+name: "PR title conventional commit linting"
+description: "Make sure PR title adhere to conventional commits"
+inputs:
+  title:
+    description: "Title of the PR"
+    required: true
+    default: ""
+outputs:
+  result:
+    description: "Output of the linting"
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - ${{ inputs.title }}
