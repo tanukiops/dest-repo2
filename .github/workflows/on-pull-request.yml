@@ -8,4 +8,4 @@ jobs:
   pr-lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: .github/actions/commit-lint@main
+      - uses: tanukiops/dest-repo2/.github/actions/commit-lint@main
